@@ -1,0 +1,82 @@
+{% schema %}
+    {
+      "name": "Product Builder",
+      "max_blocks": 3,
+      "blocks": [
+        {
+          "type": "step",
+          "name": "Step",
+          "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Step Title",
+              "default": "STEP 1"
+            },
+            {
+              "type": "text",
+              "id": "subtitle",
+              "label": "Step Subtitle",
+              "default": "SELECT SNOWBOARD"
+            },
+            {
+              "type": "product_list",
+              "id": "products",
+              "label": "Products",
+              "limit": 3
+            }
+          ]
+        }
+      ],
+      "settings": [
+        {
+          "type": "color",
+          "id": "btn_color",
+          "label": "Color of buttons",
+          "default": "#000000"
+        }
+      ]
+    }
+    {% endschema %}
+    
+    <div class="builder-container">
+      <div class="checkout-header"> <!-- Нова секція для кнопки -->
+        <button class="checkout-btn" disabled>
+          CHECKOUT (<span class="selected-count">0</span>/3)
+        </button>
+      </div>
+    
+      {% for block in section.blocks %}
+        <div class="builder-step" data-step="{{ forloop.index }}">
+          <div class="step-header">
+            <h2>{{ block.settings.title }}</h2>
+            <h3>{{ block.settings.subtitle }}</h3>
+          </div>
+          
+          <div class="products-grid">
+            {% for product in block.settings.products %}
+              <div class="product-card">
+                <div class="product-image">
+                  <img 
+                    src="{{ product.featured_image | image_url: '400x' }}" 
+                    alt="{{ product.title }}"
+                    width="94"
+                    height="230"
+                   >
+                </div>
+                <h4 class="product-title">{{ product.title }}</h4>
+                <p class="product-price">{{ product.price | money }}</p>
+                <button 
+                  class="select-btn" 
+                  style="background: {{ section.settings.btn_color }};"
+                  data-product-id="{{ product.id }}"
+                  data-step="{{ forloop.parentloop.index }}"
+                >
+                  SELECT
+                </button>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>

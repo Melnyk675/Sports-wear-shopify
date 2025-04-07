@@ -1,0 +1,9 @@
+{
+    "name": "your-theme-name",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "start": "shopify theme dev",
+      "deploy": "shopify theme deploy"
+    }
+  }

@@ -1,0 +1,28 @@
+[
+    {
+      "name": "Theme Settings",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Global Settings"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "name": "Another Setting",
+      "settings": [
+        {
+          "type": "text",
+          "id": "another_setting",
+          "label": "Another Setting",
+          "default": "default value"
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,32 @@
+{% schema %}
+    {
+      "name": "Hero",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "CREATE YOUR OWN WINTER LOOK"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "CHOOSE ONE PRODUCT IN EACH SECTION AND GET 20% ON THE WHOLE BUNDLE"
+        }
+      ]
+    }
+    {% endschema %}
+    
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1>{{ section.settings.title }}</h1>
+        <p class="subtitle">{{ section.settings.subtitle }}</p>
+        <button class="start-btn">START</button>
+      </div>
+    </div>
